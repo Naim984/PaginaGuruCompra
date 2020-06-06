@@ -56,18 +56,5 @@ public class RegisterLogin {
         df.close();
     }
 
-    @Given("the user enters the website and wants to login with their credentials")
-    public void theUserEntersTheWebsiteAndWantsToLoginWithTheirCredentials() {
-        System.out.println("login");
-    }
 
-    @And("select login section")
-    public void selectLoginSection() {
-        System.out.println("Select login");
-    }
-
-    @And("Email and password")
-    public void emailAndPassword() {
-        System.out.println("email");
-    }
 }
