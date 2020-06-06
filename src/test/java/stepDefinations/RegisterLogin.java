@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import objectReposity.HomepageReposity;
+import objectReposity.LoginReposity;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -56,15 +57,28 @@ public class RegisterLogin {
         df.close();
     }
 
-
+    WebDriver dl;
     @Given("the user enters the website and wants to login with their credentials")
     public void theUserEntersTheWebsiteAndWantsToLoginWithTheirCredentials() {
         System.out.println("Login1");
+        System.setProperty("webdriver.gecko.driver", "C:\\Users\\usuario\\Documents\\Curso_Selenium\\Recursos\\geckodriver.exe");
+        dl = new FirefoxDriver();
+        dl.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        dl.get("http://live.demoguru99.com/");
+        System.out.println("fin Primer paso");
     }
 
     @When("Enter the login section of the website and want to login")
-    public void enterTheLoginSectionOfTheWebsiteAndWantToLogin() {
-        System.out.println("Login2");
+    public void enterTheLoginSectionOfTheWebsiteAndWantToLogin() throws InterruptedException {
+        LoginReposity logarse = new LoginReposity(dl);
+        logarse.Account().click();
+        logarse.Login().click();
+        Thread.sleep(2000);
+        logarse.email().sendKeys("Derniernaim@gmail.com");
+        logarse.pass().sendKeys("123456");
+        Thread.sleep(3000);
+        logarse.sendLogin().click();
+        System.out.println("Logado correctamente");
     }
 
     @And("select login section")
@@ -85,5 +99,6 @@ public class RegisterLogin {
     @And("validate that it correctly displays the username")
     public void validateThatItCorrectlyDisplaysTheUsername() {
         System.out.println("Login5");
+        dl.close();
     }
 }
