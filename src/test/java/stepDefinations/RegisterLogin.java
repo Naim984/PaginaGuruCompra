@@ -57,4 +57,33 @@ public class RegisterLogin {
     }
 
 
+    @Given("the user enters the website and wants to login with their credentials")
+    public void theUserEntersTheWebsiteAndWantsToLoginWithTheirCredentials() {
+        System.out.println("Login1");
+    }
+
+    @When("Enter the login section of the website and want to login")
+    public void enterTheLoginSectionOfTheWebsiteAndWantToLogin() {
+        System.out.println("Login2");
+    }
+
+    @And("select login section")
+    public void selectLoginSection() {
+        System.out.println("Login3");
+    }
+
+    @And("Email and password")
+    public void emailAndPassword() {
+        System.out.println("Login3");
+    }
+
+    @Then("DASHBOARD is shown with the user's data and all their previous purchase record")
+    public void dashboardIsShownWithTheUserSDataAndAllTheirPreviousPurchaseRecord() {
+        System.out.println("Login4");
+    }
+
+    @And("validate that it correctly displays the username")
+    public void validateThatItCorrectlyDisplaysTheUsername() {
+        System.out.println("Login5");
+    }
 }
