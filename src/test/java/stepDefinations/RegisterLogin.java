@@ -57,38 +57,43 @@ public class RegisterLogin {
         df.close();
     }
 
-    WebDriver dl;
+   // WebDriver df;
     @Given("the user enters the website and wants to login with their credentials")
     public void theUserEntersTheWebsiteAndWantsToLoginWithTheirCredentials() {
         System.out.println("Login1");
         System.setProperty("webdriver.gecko.driver", "C:\\Users\\usuario\\Documents\\Curso_Selenium\\Recursos\\geckodriver.exe");
-        dl = new FirefoxDriver();
-        dl.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        dl.get("http://live.demoguru99.com/");
+        df = new FirefoxDriver();
+        df.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        df.get("http://live.demoguru99.com/");
         System.out.println("fin Primer paso");
     }
 
     @When("Enter the login section of the website and want to login")
     public void enterTheLoginSectionOfTheWebsiteAndWantToLogin() throws InterruptedException {
-        LoginReposity logarse = new LoginReposity(dl);
+        LoginReposity logarse = new LoginReposity(df);
         logarse.Account().click();
+        System.out.println("Account");
+
+
+    }
+
+    @And("select login section")
+    public void selectLoginSection() throws InterruptedException {
+        LoginReposity logarse = new LoginReposity(df);
         logarse.Login().click();
         Thread.sleep(2000);
+        System.out.println("Login3");
+    }
+
+    @And("Email and password")
+    public void emailAndPassword() throws InterruptedException {
+        LoginReposity logarse = new LoginReposity(df);
         logarse.email().sendKeys("Derniernaim@gmail.com");
         logarse.pass().sendKeys("123456");
         Thread.sleep(3000);
         logarse.sendLogin().click();
         System.out.println("Logado correctamente");
-    }
 
-    @And("select login section")
-    public void selectLoginSection() {
-        System.out.println("Login3");
-    }
-
-    @And("Email and password")
-    public void emailAndPassword() {
-        System.out.println("Login3");
     }
 
     @Then("DASHBOARD is shown with the user's data and all their previous purchase record")
@@ -97,8 +102,9 @@ public class RegisterLogin {
     }
 
     @And("validate that it correctly displays the username")
-    public void validateThatItCorrectlyDisplaysTheUsername() {
+    public void validateThatItCorrectlyDisplaysTheUsername() throws InterruptedException {
         System.out.println("Login5");
-        dl.close();
+        Thread.sleep(3000);
+        df.close();
     }
 }
