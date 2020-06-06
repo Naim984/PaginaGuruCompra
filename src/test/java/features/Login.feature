@@ -7,4 +7,13 @@ Feature: Login to the website to buy products
     Then DASHBOARD is shown
     And validate that the page title is correct
 
+    Scenario: User with previous registration and proceed to login
+      Given the user enters the website and wants to login with their credentials
+      When Enter the login section of the website
+      And select login section
+      And Email and password
+      Then DASHBOARD is shown
+      And validate that the page title is correct
+
+
 

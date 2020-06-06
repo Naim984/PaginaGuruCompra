@@ -53,5 +53,21 @@ public class RegisterLogin {
     @And("validate that the page title is correct")
     public void validateThatThePageTitleIsCorrect() {
         System.out.println("Sexto paso");
+        df.close();
+    }
+
+    @Given("the user enters the website and wants to login with their credentials")
+    public void theUserEntersTheWebsiteAndWantsToLoginWithTheirCredentials() {
+        System.out.println("login");
+    }
+
+    @And("select login section")
+    public void selectLoginSection() {
+        System.out.println("Select login");
+    }
+
+    @And("Email and password")
+    public void emailAndPassword() {
+        System.out.println("email");
     }
 }
